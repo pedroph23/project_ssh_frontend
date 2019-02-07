@@ -8,35 +8,58 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-card class="welcome-card">
-      <ion-img src="/assets/shapes.svg"></ion-img>
-      <ion-card-header>
-      <ion-card-title>Seja bem-vindo ao Smart House</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card> -->
-  <ion-list lines="none"> </ion-list>
+  <ion-card class="welcome-card">
+    <!-- <ion-img src="/assets/shapes.svg"></ion-img> -->
+    <ion-card-header>
+      <ion-card-title>Welcome to Smart House, {{ name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        This system its have objective as integracion your smartphone in your house ! 
+      </p>
+    </ion-card-content>
 
-  <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide>
-      <ion-card>
-        <ion-card-content>
-          <ion-img src="assets/5-512.png"></ion-img>
+    <ion-list lines="none"> </ion-list>
+
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide>
+        <ion-card>
+          <ion-card-content>
+            <ion-img src="assets/5-512.png"></ion-img>
+            <br />
+            <h1>Smart House</h1>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+          <ion-card-content>
+            <ion-img src="assets/6-512.png"></ion-img>
+            <br />
+            <h1>Use your Smartphone</h1>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+          <ion-img
+            src="assets/micro.png"
+            style="width:308px;height:308px;"
+          ></ion-img>
           <br />
-          <h1>Smart House </h1>
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
-    <ion-slide>
-      <ion-card>
-        <ion-card-content>
-          <ion-img src="assets/6-512.png"></ion-img>
-          <br />
-          <h1>Use your Smartphone</h1>
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
-  </ion-slides>
+          <!-- <h1 style="font-size: 1.2em">Use your microphone in you smartphone and talk with Google Assistant</h1> -->
+          <!-- <h1 style="font-size: 1.2em"></h1> -->
+          <ion-card-header>
+            <ion-card-title>Google Assistant</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>
+              Use your microphone in you smartphone and talk with Google
+              Assistant
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
 </ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar> <ion-title> Cartões</ion-title> </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-item>
+      <ion-input placeholder="Search card..." (ionChange)="dynamicSearch($event)"></ion-input>
+    </ion-item>
+    <ion-card>
+      <ion-row *ngFor="let card of cards">
+        <ion-col>
+          <ion-card [ngStyle]="{ background: color }" (click)="view(card.id)">
+            <ion-card-content>
+              <ion-img
+                src="assets/flagcard/{{ card.flag }}.png"
+                style="width:100px;height:100px;"
+              ></ion-img>
+              <ion-card-subtitle style="color: beige">{{
+                card.cardholder
+              }}</ion-card-subtitle>
+              <ion-card-subtitle style="color: beige">{{
+                card.numbercard | mask: "9999 9999 9999 9999"
+              }}</ion-card-subtitle>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button  routerLink='/cofre/register'><ion-icon name="add-circle"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

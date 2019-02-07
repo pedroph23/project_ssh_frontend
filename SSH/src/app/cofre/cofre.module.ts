@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { CofreComponent } from '../cofre/cofre.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CardComponent } from './card/card.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -15,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     IonicModule,
     HttpModule,
+    NgxMaskModule.forRoot(),
     HttpClientModule,
     RouterModule.forChild([
       {
@@ -25,10 +28,14 @@ import { HttpClientModule } from '@angular/common/http';
       {
         path: 'register',
         component: CardFormComponent
+      },
+      {
+        path: 'cards',
+        component: CardComponent
       }
     ])
   ],
-  declarations: [CofreComponent, CardFormComponent],
-  providers: [CardService]
+  declarations: [CofreComponent, CardFormComponent, CardComponent],
+  providers: [CardService, CardFormComponent]
 })
 export class CofreModule {}

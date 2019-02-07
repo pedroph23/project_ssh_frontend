@@ -3,8 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'login',
+    loadChildren: './login/login.module#LoginModule',
+  },
+  {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -14,7 +18,8 @@ const routes: Routes = [
   {
     path: 'cofre',
     loadChildren: './cofre/cofre.module#CofreModule'
-  }
+  },
+  { path: 'hub-teste', loadChildren: './hub-teste/hub-teste.module#HubTestePageModule' }
 ];
 
 @NgModule({

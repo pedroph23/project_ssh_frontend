@@ -1,10 +1,15 @@
 <ion-header>
-  <ion-toolbar> <ion-title> Registro de Cartão </ion-title> </ion-toolbar>
+  <ion-toolbar> <ion-title> Registro de Cartão *</ion-title> </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-item>
     <ion-label position="floating">Bandeira</ion-label>
-    <ion-input [(ngModel)]="card.flag"></ion-input>
+    <ion-select [(ngModel)]="card.flag" okText="Selecionar" cancelText="Cancelar">
+        <ion-select-option value="visa">Visa</ion-select-option>
+        <ion-select-option value="mastercard">Mastercard</ion-select-option>
+        <ion-select-option value="mastercard">Elo</ion-select-option>
+    </ion-select>
+    
   </ion-item>
   <ion-item>
     <ion-label position="floating">Nome do Titular</ion-label>
@@ -16,7 +21,7 @@
   </ion-item>
   <br />
   <ion-item>
-    <ion-label>Validade</ion-label>
+    <ion-label>Validade *</ion-label>
     <ion-datetime
       display-format="MMMM YYYY"
       min="2016"
@@ -25,29 +30,26 @@
     ></ion-datetime>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">CVV</ion-label>
+    <ion-label position="floating">CVV *</ion-label>
     <ion-input maxlength="4"  type="password" [(ngModel)]="card.cvv"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">CEP</ion-label>
+    <ion-label position="floating">CEP *</ion-label>
     <ion-input (ionChange)="getCEP($event)" [(ngModel)]="card.cep"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Endereço</ion-label>
-    <ion-input [(ngModel)]="card.address" ></ion-input>
+    <ion-label position="floating">Endereço *</ion-label>
+    <ion-input [(ngModel)]="card.address" required></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Cidade</ion-label>
+    <ion-label position="floating">Cidade *</ion-label>
     <ion-input [(ngModel)]="card.city"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Estado</ion-label>
+    <ion-label position="floating">Estado *</ion-label>
     <ion-input [(ngModel)]="card.state"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label position="floating">País</ion-label>
-    <ion-input [(ngModel)]="card.country"></ion-input>
-  </ion-item>
   <br /><br />
-  <ion-button expand="block" (click)="save()">Salvar</ion-button>
+  <ion-button expand="block" (click)="save()" >Salvar</ion-button>
+  <ion-button expand="block" (click)="returnPageCards()" >Cancelar</ion-button>
 </ion-content>

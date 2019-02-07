@@ -1,6 +1,8 @@
 {
   "name": "SSH",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "44c6e8be"
 }

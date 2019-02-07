@@ -1,14 +1,15 @@
 export class Card {
     constructor (
-        public flag?: String,
-        public cardholder?: String,
-        public numbercard?: String,
-        public validity?: String,
-        public cvv?: String,
-        public address?: String,
-        public state?: String,
-        public city?: String,
-        public cep?: String,
-        public country?: String,
+        public flag?: string,
+        public cardholder?: string,
+        public numbercard?: string,
+        public validity?: string,
+        public cvv?: string,
+        public address?: string,
+        public state?: string,
+        public city?: string,
+        public cep?: string,
+        public country?: string,
+        public fk_tb_person?: number
     ) {}
 }

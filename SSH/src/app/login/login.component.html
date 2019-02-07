@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-card style="padding-bottom: 100px; padding-top: 100px;">
+    <ion-card-header>
+      <h1 style="text-align: center;">Sign In</h1>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- <p>The content for this card</p>  -->
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input  [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating" >Password</ion-label>
+        <ion-input [(ngModel)]="password" type="password"></ion-input>
+      </ion-item>
+      <br /><br />
+      <ion-button expand="full" (click)="signIn()">Continue</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

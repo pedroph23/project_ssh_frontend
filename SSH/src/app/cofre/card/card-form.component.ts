@@ -2,17 +2,21 @@ import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Card } from './card.model';
 import { CardService } from './card.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
+import { CardValidateUtil } from '../../utils/validators/card.validate.util';
+import { NgMask } from 'ng-mask';
 
 
 @Component({
     selector: 'app-cofre',
     templateUrl: 'card-form.component.html',
   })
-export class CardFormComponent implements OnInit {
+export class CardFormComponent implements OnInit, OnDestroy {
 
     public card: Card;
+    public isEdit = false;
+    public util = new CardValidateUtil;
 
 
     constructor(
@@ -24,18 +28,20 @@ export class CardFormComponent implements OnInit {
 
     ngOnInit() {
         this.card = new Card();
-        if (window.localStorage.getItem('idc') !=  null) {
-            return this.showCard(window.localStorage.getItem('idc'));
+        if (localStorage.getItem('idc') !=  null) {
+            return this.showCard(localStorage.getItem('idc'));
         }
          this.getPersonSession();
     }
 
 
     save() {
-         this.cardService.create(this.card).subscribe( res => {
-            location.reload();
-            this.router.navigate(['/cofre/cards']);
-        });
+        if (this.util.validate(this.card)) {
+            this.cardService.create(this.card).subscribe( res => {
+                location.reload();
+                this.router.navigate(['/cofre/cards']);
+            });
+        }
     }
 
 
@@ -47,9 +53,19 @@ export class CardFormComponent implements OnInit {
 
    showCard(idCard: string) {
      this.cardService.getCardById(idCard).subscribe( (res: Card) => {
+        //  this.isEdit = true;
          this.card = res;
      });
      window.localStorage.removeItem('idc');
+    }
+
+    public delete(idCard) {
+        localStorage.setItem('idc', idCard);
+        this.cardService.deleteCard(localStorage.getItem('idc')).subscribe(res => {
+            localStorage.removeItem('idc');
+        });
+         location.reload();
+        this.navController.navigateRoot('cofre/cards');
     }
 
 
@@ -65,8 +81,11 @@ export class CardFormComponent implements OnInit {
   }
 
   returnPageCards() {
-    location.reload();
     this.router.navigate(['/cofre/cards']);
+  }
+
+  ngOnDestroy() {
+      this.ngOnInit();
   }
 
 

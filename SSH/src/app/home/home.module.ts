@@ -15,7 +15,6 @@ import { HomePage } from './home.page';
     FormsModule,
     IonicModule,
     HttpModule,
-    HttpClientModule,
     RouterModule.forChild([
       {
         path: '',

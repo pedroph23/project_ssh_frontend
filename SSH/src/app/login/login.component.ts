@@ -1,8 +1,11 @@
+import { TokenService } from './../auth/token.service';
 import { Component , OnInit} from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { MenuController, NavController, LoadingController  } from '@ionic/angular';
 
 import { IonicPage } from 'ionic-angular/navigation/ionic-page';
+import { headersToString } from 'selenium-webdriver/http';
+import { Headers } from '@angular/http';
 
 @IonicPage()
 @Component({
@@ -14,12 +17,14 @@ export class LoginComponent implements OnInit {
    public email: string;
    public password: string;
    public itsOk = false;
+   public request = new XMLHttpRequest();
 
 
     constructor (private ofAuth: AngularFireAuth,
                  public navCtrl: NavController,
                  private menuController: MenuController,
-                 private loadingCtrl: LoadingController) {}
+                 private loadingCtrl: LoadingController,
+                 private tokenService: TokenService) {}
 
     ngOnInit() {
     }
@@ -44,7 +49,7 @@ export class LoginComponent implements OnInit {
             if (res.user) {
                  this.ofAuth.auth.currentUser.getIdToken(true).then( idToken => {
                     window.localStorage.setItem('eid', this.ofAuth.auth.currentUser.email);
-                    window.localStorage.setItem('at',  idToken);
+                    this.tokenService.token = idToken;
                 });
                 setTimeout( time => {
                     this.menuController.enable(true);

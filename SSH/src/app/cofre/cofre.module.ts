@@ -1,3 +1,4 @@
+import { TokenApiService } from './../auth/interceptor/token-api.service';
 import { CardService } from './card/card.service';
 import { CardFormComponent } from './card/card-form.component';
 import { NgModule } from '@angular/core';
@@ -7,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { CofreComponent } from '../cofre/cofre.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CardComponent } from './card/card.component';
 import { NgxMaskModule } from 'ngx-mask';
 
@@ -18,7 +19,6 @@ import { NgxMaskModule } from 'ngx-mask';
     IonicModule,
     HttpModule,
     NgxMaskModule.forRoot(),
-    HttpClientModule,
     RouterModule.forChild([
       {
         path: '',
@@ -36,6 +36,7 @@ import { NgxMaskModule } from 'ngx-mask';
     ])
   ],
   declarations: [CofreComponent, CardFormComponent, CardComponent],
-  providers: [CardService, CardFormComponent]
+  providers: [CardService, CardFormComponent,
+  ]
 })
 export class CofreModule {}

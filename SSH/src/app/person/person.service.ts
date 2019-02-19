@@ -6,10 +6,10 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class PersonService {
 
-    public urlPerson: string =  '/person';
+    public urlPerson =  '/person';
 
     constructor(
-        private http?: HttpClient
+        private http: HttpClient
     ) {}
 
  getAll() {

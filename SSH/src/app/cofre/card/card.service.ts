@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class CardService {
 
-  public urlCard: string =  '/card';
+  public urlCard =  '/card';
 
     constructor(
-         public http?: HttpClient
+         public http: HttpClient
          ) {}
 
 
@@ -33,6 +33,10 @@ export class CardService {
 
   public getCardById(idCard: string): Observable<any> {
     return this.http.get(environmentLocal.URL_API + this.urlCard + '/' + idCard);
+  }
+
+  public deleteCard(idCard: string): Observable<any>  {
+    return this.http.delete(environmentLocal.URL_API + this.urlCard + '/' + idCard);
   }
 
   public dynamicSearch(search: string): Observable<any> {

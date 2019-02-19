@@ -7,25 +7,25 @@
     <ion-select [(ngModel)]="card.flag" okText="Selecionar" cancelText="Cancelar">
         <ion-select-option value="visa">Visa</ion-select-option>
         <ion-select-option value="mastercard">Mastercard</ion-select-option>
-        <ion-select-option value="mastercard">Elo</ion-select-option>
+        <ion-select-option value="elo">Elo</ion-select-option>
     </ion-select>
     
   </ion-item>
   <ion-item>
     <ion-label position="floating">Nome do Titular</ion-label>
-    <ion-input [(ngModel)]="card.cardholder"></ion-input>
+    <ion-input [(ngModel)]="card.cardholder" style="text-transform: uppercase"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Número do Cartão</ion-label>
-    <ion-input maxlength="16" [(ngModel)]="card.numbercard"></ion-input>
+    <ion-input maxlength="19" [(ngModel)]="card.numbercard"></ion-input>
   </ion-item>
   <br />
   <ion-item>
     <ion-label>Validade *</ion-label>
     <ion-datetime
       display-format="MMMM YYYY"
-      min="2016"
-      max="2020-10-31"
+      min="2019"
+      max="2030-12-31"
       [(ngModel)]="card.validity"
     ></ion-datetime>
   </ion-item>
@@ -35,7 +35,7 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">CEP *</ion-label>
-    <ion-input (ionChange)="getCEP($event)" [(ngModel)]="card.cep"></ion-input>
+    <ion-input maxlenght="8" (ionChange)="getCEP($event)" [(ngModel)]="card.cep"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Endereço *</ion-label>
@@ -50,6 +50,27 @@
     <ion-input [(ngModel)]="card.state"></ion-input>
   </ion-item>
   <br /><br />
-  <ion-button expand="block" (click)="save()" >Salvar</ion-button>
-  <ion-button expand="block" (click)="returnPageCards()" >Cancelar</ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="success" (click)="save()" >Salvar</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" (click)="returnPageCards()" fill="outline">Cancelar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="arrow-dropup"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button routerLink="/cofre/register" (click)="delete(card.id)"  color="danger"
+        ><ion-icon name="trash" ></ion-icon
+      ></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

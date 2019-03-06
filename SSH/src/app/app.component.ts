@@ -18,6 +18,10 @@ export class AppComponent {
     {
       title: 'Cofre',
       url: '/cofre'
+    },
+    {
+      title: 'Components',
+      url: '/component'
     }
   ];
 

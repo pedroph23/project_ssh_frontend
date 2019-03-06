@@ -62,7 +62,7 @@ export class CardFormComponent implements OnInit, OnDestroy {
      window.localStorage.removeItem('idc');
     }
 
-    delete(idCard) {
+   delete(idCard) {
         localStorage.setItem('idc', idCard);
         this.cardService.deleteCard(localStorage.getItem('idc')).subscribe(res => {
             localStorage.removeItem('idc');
@@ -81,10 +81,6 @@ export class CardFormComponent implements OnInit, OnDestroy {
             this.card.country = 'Brasil';
           });
       }
-  }
-
-  returnPageCards() {
-    this.router.navigate(['/cofre/cards']);
   }
 
   ngOnDestroy() {

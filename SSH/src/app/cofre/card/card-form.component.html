@@ -1,19 +1,30 @@
 <ion-header>
-  <ion-toolbar> <ion-title> Registro de Cartão *</ion-title> </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="home"  text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title> Registro de Cartão *</ion-title>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-item>
     <ion-label position="floating">Bandeira</ion-label>
-    <ion-select [(ngModel)]="card.flag" okText="Selecionar" cancelText="Cancelar">
-        <ion-select-option value="visa">Visa</ion-select-option>
-        <ion-select-option value="mastercard">Mastercard</ion-select-option>
-        <ion-select-option value="elo">Elo</ion-select-option>
+    <ion-select
+      [(ngModel)]="card.flag"
+      okText="Selecionar"
+      cancelText="Cancelar"
+    >
+      <ion-select-option value="visa">Visa</ion-select-option>
+      <ion-select-option value="mastercard">Mastercard</ion-select-option>
+      <ion-select-option value="elo">Elo</ion-select-option>
     </ion-select>
-    
   </ion-item>
   <ion-item>
     <ion-label position="floating">Nome do Titular</ion-label>
-    <ion-input [(ngModel)]="card.cardholder" style="text-transform: uppercase"></ion-input>
+    <ion-input
+      [(ngModel)]="card.cardholder"
+      style="text-transform: uppercase"
+    ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Número do Cartão</ion-label>
@@ -31,11 +42,15 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">CVV *</ion-label>
-    <ion-input maxlength="4"  type="password" [(ngModel)]="card.cvv"></ion-input>
+    <ion-input maxlength="4" type="password" [(ngModel)]="card.cvv"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">CEP *</ion-label>
-    <ion-input maxlenght="8" (ionChange)="getCEP($event)" [(ngModel)]="card.cep"></ion-input>
+    <ion-input
+      maxlenght="8"
+      (ionChange)="getCEP($event)"
+      [(ngModel)]="card.cep"
+    ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Endereço *</ion-label>
@@ -52,24 +67,24 @@
   <br /><br />
   <ion-grid>
     <ion-row>
-      <ion-col size="6">
-        <ion-button expand="block" color="success" (click)="save()" >Salvar</ion-button>
-      </ion-col>
-      <ion-col size="6">
-        <ion-button expand="block" (click)="returnPageCards()" fill="outline">Cancelar</ion-button>
+      <ion-col size="12">
+        <ion-button expand="block" color="success" (click)="save()"
+          >Salvar</ion-button
+        >
       </ion-col>
     </ion-row>
   </ion-grid>
- 
-
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button>
       <ion-icon name="arrow-dropup"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">
-      <ion-fab-button routerLink="/cofre/register" (click)="delete(card.id)"  color="danger"
-        ><ion-icon name="trash" ></ion-icon
+      <ion-fab-button
+        routerLink="/cofre/register"
+        (click)="delete(card.id)"
+        color="danger"
+        ><ion-icon name="trash"></ion-icon
       ></ion-fab-button>
     </ion-fab-list>
   </ion-fab>

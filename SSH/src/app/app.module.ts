@@ -1,3 +1,4 @@
+import { ToastMessager } from './utils/messager/toast.messager.util';
 import { UtilModule } from './utils/util.module';
 import { CardService } from './cofre/card/card.service';
 import { NgModule } from '@angular/core';
@@ -24,6 +25,7 @@ import { TokenService } from './auth/token.service';
     HttpClientModule
   ],
   providers: [
+    ToastMessager,
     StatusBar,
     SplashScreen,
     {

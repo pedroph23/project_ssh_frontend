@@ -22,9 +22,16 @@ export class CardValidateUtil {
   }
 
   numbercard(card: any) {
+
+    if (!card.numbercard) {
+     return false;
+    }
+
     switch (card.flag) {
+
       case 'visa':
         return /^4[0-9]{12}(?:[0-9]{3})/.test(card.numbercard.replace(/\s/g, ''));
+
       case 'mastercard':
         return /^5[1-5][0-9]{14}/.test(card.numbercard.replace(/\s/g, ''));
 

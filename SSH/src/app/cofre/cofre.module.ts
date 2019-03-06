@@ -11,6 +11,7 @@ import { CofreComponent } from '../cofre/cofre.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CardComponent } from './card/card.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { ToastMessager } from '../utils/messager/toast.messager.util';
 
 @NgModule({
   imports: [
@@ -36,7 +37,6 @@ import { NgxMaskModule } from 'ngx-mask';
     ])
   ],
   declarations: [CofreComponent, CardFormComponent, CardComponent],
-  providers: [CardService, CardFormComponent,
-  ]
+  providers: [CardService, CardFormComponent]
 })
 export class CofreModule {}

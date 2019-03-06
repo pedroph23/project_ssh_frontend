@@ -1,5 +1,6 @@
+import { ToastMessager } from './../../utils/messager/toast.messager.util';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { Card } from './card.model';
 import { CardService } from './card.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -18,32 +19,34 @@ export class CardFormComponent implements OnInit, OnDestroy {
     public isEdit = false;
     public util = new CardValidateUtil;
 
-
     constructor(
         private cardService: CardService,
         private navController: NavController,
-        private router: Router
+        private router: Router,
+        private toast: ToastMessager,
     ) {}
 
 
     ngOnInit() {
         this.card = new Card();
+
         if (localStorage.getItem('idc') !=  null) {
             return this.showCard(localStorage.getItem('idc'));
         }
+
          this.getPersonSession();
     }
 
 
     save() {
         if (this.util.validate(this.card)) {
-            this.cardService.create(this.card).subscribe( res => {
+           return  this.cardService.create(this.card).subscribe( res => {
                 location.reload();
                 this.router.navigate(['/cofre/cards']);
             });
         }
+        this.toast.messager('Dados inválidos, reveja !', 2000);
     }
-
 
   getPersonSession() {
     this.cardService.getNameAndEmail(window.localStorage.getItem('eid')).subscribe(res => {
@@ -59,7 +62,7 @@ export class CardFormComponent implements OnInit, OnDestroy {
      window.localStorage.removeItem('idc');
     }
 
-    public delete(idCard) {
+    delete(idCard) {
         localStorage.setItem('idc', idCard);
         this.cardService.deleteCard(localStorage.getItem('idc')).subscribe(res => {
             localStorage.removeItem('idc');

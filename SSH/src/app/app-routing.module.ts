@@ -19,7 +19,11 @@ const routes: Routes = [
     path: 'cofre',
     loadChildren: './cofre/cofre.module#CofreModule'
   },
-  { path: 'hub-teste', loadChildren: './hub-teste/hub-teste.module#HubTestePageModule' }
+  { path: 'hub-teste', loadChildren: './hub-teste/hub-teste.module#HubTestePageModule' },
+  {
+    path: 'component',
+    loadChildren: './component-iot/component.iot.module#ComponentIotModule'
+  }
 ];
 
 @NgModule({

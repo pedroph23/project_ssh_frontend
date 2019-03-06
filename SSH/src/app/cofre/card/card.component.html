@@ -29,29 +29,14 @@
                   }}</ion-card-subtitle>
                 </ion-card-content>
               </ion-card>
-            
-
-            <!-- <ion-slide>
-              <ion-card
-                style="background: rgb(228, 0, 26); width: 300px; height: 196px;"
-                (click)="delete(card.id)"
-              >
-                <ion-card-content>
-                  <ion-img
-                    src="assets/icon/trash-can.svg"
-                    style="width:100px;height:100px; margin-left: 75px; margin-right: 75px; margin-top: 25px">
-                  </ion-img>
-                </ion-card-content>
-              </ion-card>
-            </ion-slide> -->
         </ion-col>
       </ion-row>
     </ion-card>
   </ion-grid>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button >
-      <ion-icon name="add" routerLink="/cofre/register"></ion-icon>
+    <ion-fab-button routerLink="/cofre/register">
+      <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
